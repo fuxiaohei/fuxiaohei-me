@@ -1,0 +1,37 @@
+-----ini
+
+title = 换新博客了
+slug = first-blog
+date = 2014-01-19 16:16:24
+date = 2014-01-19 16:16:24
+author = 傅小黑
+author_email = fuxiaohei@vip.qq.com
+author_url = http://fuxiaohei.me/
+tags = Fxh.Go
+
+-----markdown
+
+终于，Go语言开发的博客算发布了，[Fxh.Go](http://github.com/fuxiaohei/GoBlog/)。和原来的php相比，变化还是很大的。
+
+首先是程序上：
+
+* 花了很长时间的学习和研究，终于完全用Go语言，搭建自己的框架，实现了这个程序。
+* 没用数据库，完全是json储存，数据全部维持在内存，读取速度非常快。
+* 再三思索，还是没用.me的域名，用回了更早买的.net。同时，没用大的512M的VPS，用了手里最小的128M的。
+* 前端都是自己设计实现的。
+<!--more-->
+
+然后是内容上：
+
+这里可能要更多的谈技术分享，尤其是php，nodejs和go语言的一些想法。
+另外主要的领域是web开发，其他方面涉猎不深，能力有限。
+
+这次更新在我的[php站点](http://hexiaz.com)上有预告，不过因为种种原因，耽搁至今。
+不过总算有所结果，聊以欣慰。
+
+最后的说明：
+
+`Fxh.Go`这个程序功能尚未全面，仍在持续开发。
+主体结构不会再有巨大的变动，应该已经可用。
+有兴趣可以尝试一下，如果发现问题可以到github提issue或直接pull request，欢迎你的参与。
+
