@@ -32,7 +32,7 @@ link = /friends
 title = 好友
 i18n = friends
 blank = true
-hover = about
+hover = friends
 
 
 
