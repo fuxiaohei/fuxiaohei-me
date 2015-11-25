@@ -185,7 +185,7 @@ func (wp *workerPool) workerFunc(ch *workerChan) {
 }
 ```
 
-看到这里就可以总结一下。`valyala/fasthttp`其实是把`net.Conn`分配到一定数量的goroutine中执行，而不是一对一。换句话说，当goroutine数量巨大的时候，上下文切换成本开始有明显的性能影响。标准库在并发量很大的时候面临这个问题。`valyala/fasthttp`就使用了worker规避这个问题。
+看到这里就可以总结一下。`valyala/fasthttp`其实是把`net.Conn`分配到一定数量的goroutine中执行，而不是一对一。换句话说，当goroutine数量巨大的时候，上下文切换成本开始有明显的性能影响。标准库在并发量很大的时候面临这个问题。`valyala/fasthttp`就使用了worker规避这个问题。goroutine本身就是轻量级的协程，可以即开即用。worker尽量重用每个goroutine，从而可以控制住goroutine的数量（默认的最大chan数量为256×1024）。而且如果http请求阻塞，会霸占`workChan`，直到把worker里的`workChan`耗尽（有keepAlive超时配置来处理这个问题）。
 
 另外一个发现是`*RequestCtx`上下文的池。
 
