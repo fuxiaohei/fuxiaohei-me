@@ -8,4 +8,4 @@ keyword = 傅小黑,fuxiaohei,blog,go,golang
 desc = FuXiaohei.Me - 傅小黑的自留地
 ; build links for feed, sitemap
 domain = fuxiaohei.me
-root = http://fuxiaohei.me/
+root = http://fuxiaohei.me
