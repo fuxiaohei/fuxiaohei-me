@@ -272,6 +272,10 @@ func (req *Request) Read(r *bufio.Reader) error {
 总的来说，用池来来减少对象数量，也是增强性能最常见的方法。标准库和 `valyala/fasthttp` 都对 `*bufio.Reader` 和 `*bufio.Writer` 做了池的处理。不过对于频繁存取的服务，池的效率提升比较有限。而且`sync.Pool`没有容量控制，有时会变得不可控，需要注意一下。
 
 
+##### Thanks
+
+上文是在 **Go实践群(386056972)** 和群友讨论时顺便深入阅读的结果。感谢群友 [华子](http://blog.rootk.com/) 的支持。
+
 
 
 
