@@ -3,7 +3,7 @@
 title = Pugo 一次内存泄露的调优
 slug = pugo-mem-leak-profile
 date = 2015-10-14 22:58:13
-date = 2015-10-14 23:58:13
+update_date = 2015-10-14 23:58:13
 author = 傅小黑
 author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/

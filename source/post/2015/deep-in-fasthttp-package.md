@@ -2,8 +2,8 @@
 
 title = 阅读 valyala/fasthttp —— 比官方库更快的 HTTP 包
 slug = deep-in-fasthttp-package
-date = 2015-11-24 22:58:59
-date = 2015-11-28 10:58:59
+date = 2015-11-25 10:58:59
+update_date = 2015-11-28 10:58:59
 author = 傅小黑
 author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
