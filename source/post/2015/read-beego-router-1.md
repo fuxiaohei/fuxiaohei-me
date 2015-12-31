@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 阅读 Beego - 路由机制 (1)
 slug = read-beego-router-1
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go,Beego
 
------markdown
+```
 
 
 [beego](https://github.com/astaxie/beego) 是国产著名的 Golang Web 框架，基于 MVC 模型，支持自动路由和Restful，并且有Config,Cache,Session,Orm等模块可以直接使用。MVC中最重要的就是路由。它实现从Web请求到对应控制器方法的映射。一般而言，路由包括三个部分：**添加规则**，**解析规则**和**匹配规则**。正好我分为三个部分，来分析beego的路由实现机制。

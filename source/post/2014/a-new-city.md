@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 新城市安定好了
 slug = a-new-city
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 
 
------markdown
+```
 
 6月中旬合同到期，再休息半个月，离开了从大学生活6年的西安。应@达达的邀请，去厦门开始新的工作生活。7月安置好生活，找到新的工作，8月开始正式上班，3个月过去。事情都稳定下来了。
 

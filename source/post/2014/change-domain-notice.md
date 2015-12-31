@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 更新域名的公告
 slug = change-domain-notice
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 域名
 
------markdown
+```
 
 随着手中几个fuxiaohei相关域名的到期，以及最近手头不太宽裕，
 决定放弃对com和net的续费，只保留me域名，因此：

@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 2月的一点抱怨
 slug = complain-of-february-2014
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 工作,开源
 
------markdown
+```
 
 2月打春，可惜，西安还是在冬天的雾霾和淅淅沥沥里度过。自己还年轻，24不到，可总觉得有些工作的累心。怎么说呢？一个破烂的php项目折腾了半个月。而工作之余也在为开源的东西做些工作。可能是事情多了，累了吧。
 

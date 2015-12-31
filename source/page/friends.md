@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 好友
 slug = friends
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 hover = friends
 
------markdown
+```
 
 #### 大牛前辈
 

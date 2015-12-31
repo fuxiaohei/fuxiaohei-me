@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 年初不爽二三事
 slug = unluck-in-2014-spring
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 不爽
 
------markdown
+```
 
 今年是本命年，传统上要多加小心。这不，过完年才回来上班，就接连几件事情不爽，无可奈何。
 

@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Martini源码剖析
 slug = martini-source-study
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言,Martini,源码
 
------markdown
+```
 
 [martini](http://github.com/go-martini/martini)是非常优雅的Go Web框架。他基于依赖注入的思想，仿照[Sinatra](http://www.sinatrarb.com/)的路由设计，参考[Express](http://expressjs.com/)的中间件设计，而且核心微小，扩展方便，非常值得学习。但是由于本身API设计简洁，使很多细节无法从代码理解。所以，我写一点笔记记录`martini`的工作方式。
 <!--more-->

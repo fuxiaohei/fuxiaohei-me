@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 马年快乐，恭贺新禧
 slug = new-horse-year
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 恭喜
 
------markdown
+```
 
 ![恭贺新禧](/static/media/201401302358434.png)
 

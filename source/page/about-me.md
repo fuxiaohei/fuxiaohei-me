@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 关于
 slug = about-me
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 hover = about
 
------markdown
+```
 
 ### 关于小站
 

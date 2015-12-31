@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Ubuntu 下 nginx , php , mysql 和 golang 的简单安装
 slug = ubuntu-lnmp-golang-installation
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = LNMP,Go语言
 
------markdown
+```
 
 我是搞php出身，自然安装lnmp是常规技能。以前的手段还是lnmp安装包，比如军哥的[lnmp1.0](http://lnmp.org/)。随着php和mysql的更新，大多数一键安装都开始版本老化，更新困难的问题。因此，重新研究了一下Ubuntu下lnmp的安装，发现现在简单的多，记录一下。
 

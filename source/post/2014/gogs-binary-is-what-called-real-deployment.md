@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Gogs：用二进制才是真正的部署
 slug = gogs-binary-is-what-called-real-deployment
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言,GoGit,gogs,Git
 
------markdown
+```
 
 原文作者 [无闻](http://wuwen.org), [http://wuwen.org/article/27/gogs-binary-is-what-called-real-deployment.html](http://wuwen.org/article/27/gogs-binary-is-what-called-real-deployment.html)
 

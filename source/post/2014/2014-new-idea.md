@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 2014 年的想法
 slug = 2014-new-idea
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 2014,想法
 
------markdown
+```
 
 ![2014_new_idea](/static/media/201401282026245.png)
 

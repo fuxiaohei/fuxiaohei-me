@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Fxh.Go的新计划
 slug = fxh-go-new-plan
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言,Fxh.Go
 
------markdown
+```
 
 因为最近忙于工作和`gogits`的事情，`Fxh.Go`的进度落下了很多。而且，更多的想法出现了。
 本来想要从原生Go语言开始，搭建框架，完善博客功能。但是希望用户从头研究代码，是非常不现实的。因此，索性从现在的库类里组合，重新开发博客功能。方便大家理解使用。这就是`Fxh.Go`的新计划。

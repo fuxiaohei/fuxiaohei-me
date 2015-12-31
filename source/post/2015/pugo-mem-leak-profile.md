@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Pugo 一次内存泄露的调优
 slug = pugo-mem-leak-profile
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go,调优,pprof
 
------markdown
+```
 
 我刚刚写好新的博客程序 [Pugo](https://github.com/go-xiaohei/pugo)，欢迎试用和体验。这两天我把个站 [fuxiaohei.me](http://fuxiaohei.me) 迁移到新的博客程序。但是，经过一天的运行，发现内存从启动的 14MB 上升到了 228 MB。显然程序发生内存泄露，所以也开始以下调优过程。
 

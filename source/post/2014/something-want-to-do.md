@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 在做一些自己想做的事情
 slug = something-want-to-do
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言,工作,学习
 
------markdown
+```
 
 小站长草一个月，本来的计划有很多变化。我也不知道要说些什么好。生活总有如意不如意，自己负责就好。反正，终极的希望，**做一些自己想做的事情就好**。
 

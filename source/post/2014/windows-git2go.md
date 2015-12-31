@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Windows 下 gcc + golang 编译 git2go
 slug = windows-git2go
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言
 
------markdown
+```
 
 最近研究用go语言操作git，除了直接走命令行用`os/exec`包，还可以使用`libgit2`的go绑定`git2go`操作。
 但是`libgit2`是c语言库，go使用`cgo`连接c程序，需要`cgo`的支持。总之过程复杂，摔了一路。<!--more-->

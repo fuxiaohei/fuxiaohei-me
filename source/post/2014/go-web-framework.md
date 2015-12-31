@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = Go语言的Web框架
 slug = go-web-framework
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go语言,Web,框架
 
------markdown
+```
 
 我去年开始研究Go语言，不知不觉快有一年了。以前我研究php和nodejs，都是弱类型的解释性语言。想找一个编译型的强类型语言继续学习，就选中了新奇的Go语言。我只关注Web方面的应用，看了很多有兴趣的开源的Go Web框架，随便吐槽一下。
 

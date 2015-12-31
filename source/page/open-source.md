@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 开源
 slug = open-source
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 hover =
 
------markdown
+```
 
 ### 简述
 

@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 换新博客了
 slug = first-blog
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Fxh.Go
 
------markdown
+```
 
 终于，Go语言开发的博客算发布了，[Fxh.Go](http://github.com/fuxiaohei/GoBlog/)。和原来的php相比，变化还是很大的。
 

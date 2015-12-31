@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 阅读 valyala/fasthttp —— 比官方库更快的 HTTP 包
 slug = deep-in-fasthttp-package
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = Go,Http
 
------markdown
+```
 
 [valyala/fasthttp](https://github.com/valyala/fasthttp) 是号称比官方`net/http`库更快的 http server 库。就去顺便研究了，发现一些细节的不同。
 

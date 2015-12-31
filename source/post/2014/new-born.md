@@ -1,4 +1,4 @@
------ini
+```ini
 
 title = 新的开始
 slug = new-born
@@ -9,7 +9,7 @@ author_email = fuxiaohei@vip.qq.com
 author_url = http://fuxiaohei.me/
 tags = 开始
 
------markdown
+```
 
 到现在，Go语言开发的个站的主题内容已经基本完成。目前正致力于独立页面，附件上传，友链管理几个模块的开发。前端也还有很多细节，比如代码高亮，响应式设计等没有开始动手。不过慢慢来吧，预计这个月内可以有个比较好的结果。<!--more-->
 
