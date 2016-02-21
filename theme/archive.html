@@ -12,8 +12,8 @@
                         <hr/>
                         {{range .Posts}}
                         <h4>
-                            <span class="date">{{.Created.Month}}.{{.Created.Day}}</span>
-                            <a href="{{url .Url}}">{{.Title}}</a>
+                            <span class="date">{{printf "%d" .Created.Month}}.{{.Created.Day}}</span>
+                            <a href="{{.URL}}">{{.Title}}</a>
                         </h4>
                         {{end}}
                     </div>

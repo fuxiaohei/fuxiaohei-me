@@ -204,14 +204,21 @@ body {
     font-size: 14px;
 }
 
-.article .admin-btn {
-    position: absolute;
-    top: -1.4em;
-    right: -2em;
+.article table{
+    width: 100%;
+    margin: .5rem 1rem;
+    line-height: 3rem;
 }
 
-.article .admin-btn .btn {
-    margin-left: 1em;
+.article td{
+    border-top: 1px solid #DDD;
+    padding:0 .5rem;
+}
+
+.article th{
+    font-weight: bold;
+    padding:0 .5rem;
+    text-align: left;
 }
 
 #article-single .aside {
@@ -246,13 +253,13 @@ body {
 */
 
 #archive-list .panel {
-    padding-bottom: 3em;
+    padding: 2em 3em;
 }
 
 .archive .date {
     margin-right: 1em;
     font-size: .8em;
-    color: #DDD;
+    color: #BBB;
     display: inline-block;
     width: 3em;
 }
@@ -278,14 +285,4 @@ body {
 
 #footer a {
     color: #AAA;
-}
-
-/*
-#admin-bar
-*/
-
-#admin-bar {
-    position: fixed;
-    top: 24px;
-    left: 24px;
 }
