@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Gogs：用二进制才是真正的部署
-slug = gogs-binary-is-what-called-real-deployment
-date = 2014-03-31 10:58:59
-date = 2014-03-31 10:58:59
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,GoGit,gogs,Git
+title = "Gogs：用二进制才是真正的部署"
+slug = "gogs-binary-is-what-called-real-deployment"
+date = "2014-03-31 10:58:59"
+author = "fuxiaohei"
+tags = ["Go","gogs","git"]
 
 ```
 

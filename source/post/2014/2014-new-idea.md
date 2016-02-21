@@ -1,17 +1,13 @@
-```ini
-
-title = 2014 年的想法
-slug = 2014-new-idea
-date = 2014-01-28 20:27:18
-date = 2014-01-28 20:27:18
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 2014,想法
+```toml
+title = "2014 年的想法"
+slug = "2014-new-idea"
+date = "2014-01-28 20:27:18"
+author = "fuxiaohei"
+tags = ["2014","想法"]
 
 ```
 
-![2014_new_idea](/static/media/201401282026245.png)
+![2014_new_idea](//media/201401282026245.png)
 
 2014年，24岁，本命年。俗话说，本命年要小心，不知未来会有怎样的安排。新的一年，一些计划想法以前就有雏形。即使仍然看不清，还是要为未来打一点草稿。希望自己，一帆风顺吧。
 

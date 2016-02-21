@@ -1,13 +1,9 @@
-```ini
-
-title = 2月的一点抱怨
-slug = complain-of-february-2014
-date = 2014-02-28 23:36:30
-date = 2014-02-28 23:36:30
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 工作,开源
+```toml
+title = "2月的一点抱怨"
+slug = "complain-of-february-2014"
+date = "2014-02-28 23:36:30"
+author = "fuxiaohei"
+tags = ["工作","开源"]
 
 ```
 

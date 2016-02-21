@@ -1,19 +1,16 @@
-```ini
+```toml
 
-title = Gamma 技术分享会
-slug = gamma-tech-share
-date = 2016-01-11 01:58:59
-date = 2016-01-11 01:58:59
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = React
+title = "Gamma 技术分享会"
+slug = "gamma-tech-share"
+date = "2016-01-11 01:58:59"
+author = "fuxiaohei"
+tags = ["react","flux"]
 
 ```
 
 [Gamma 技术分享](http://detail.koudaitong.com/show/goods?alias=3f3zsbxqi5hec) 是由峰瑞资本 FreeS 组织的技术分享会。以前没有听说过，这次在厦门举行，就去看看。这次的主题很多和 `React` 有关，我比较有兴趣，就去听听看看，学习一下。
 
-![gamma-tech](/static/media/gamma-tech-share.jpg)
+![gamma-tech](/media/gamma-tech-share.jpg)
 
 <!--more-->
 

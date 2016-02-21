@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Fxh.Go的新计划
-slug = fxh-go-new-plan
-date = 2014-04-08 15:46:57
-date = 2014-04-08 15:46:57
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,Fxh.Go
+title = "Fxh.Go的新计划"
+slug = "fxh-go-new-plan"
+date = "2014-04-08 15:46:57"
+author = "fuxiaohei"
+tags = ["Go"]
 
 ```
 

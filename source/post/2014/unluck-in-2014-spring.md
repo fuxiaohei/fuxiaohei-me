@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = 年初不爽二三事
-slug = unluck-in-2014-spring
-date = 2014-02-13 10:28:52
-date = 2014-02-13 10:28:52
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 不爽
+title = "年初不爽二三事"
+slug = "unluck-in-2014-spring"
+date = "2014-02-13 10:28:52"
+author = "fuxiaohei"
+tags = ["不爽"]
 
 ```
 

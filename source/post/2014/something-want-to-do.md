@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = 在做一些自己想做的事情
-slug = something-want-to-do
-date = 2014-05-28 00:36:14
-date = 2014-05-28 00:36:14
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,工作,学习
+title = "在做一些自己想做的事情"
+slug = "something-want-to-do"
+date = "2014-05-28 00:36:14"
+author = "fuxiaohei"
+tags = ["Go","工作","学习"]
 
 ```
 

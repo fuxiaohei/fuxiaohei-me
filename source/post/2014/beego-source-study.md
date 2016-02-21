@@ -1,14 +1,9 @@
-```ini
-
-title = Beego源码分析
-slug = beego-source-study
-date = 2014-04-30 13:02:55
-date = 2014-04-30 13:02:55
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,beego
-
+```toml
+title = "Beego源码分析"
+slug = "beego-source-study"
+date = "2014-04-30 13:02:55"
+author = "fuxiaohei"
+tags = ["Go","beego"]
 ```
 
 `beego` 是 [@astaxie](https://github.com/astaxie) 开发的重量级Go语言Web框架。它有标准的MVC模式，完善的功能模块，和优异的调试和开发模式等特点。并且`beego`在国内企业用户较多，社区发达和Q群，文档齐全，特别是 @astaxie 本人对bug和issue等回复和代码修复很快，非常敬业。`beego`框架本身模块众多，无法简单描述所有的功能。我简单阅读了源码，记录一下`beego`执行过程。官方文档已经图示了`beego`执行过程[图](http://beego.me/docs/mvc/)，而我会比较详细的解释`beego`的源码实现。

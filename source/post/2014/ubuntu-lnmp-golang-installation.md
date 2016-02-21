@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Ubuntu 下 nginx , php , mysql 和 golang 的简单安装
-slug = ubuntu-lnmp-golang-installation
-date = 2014-02-19 21:56:39
-date = 2014-02-19 21:56:39
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = LNMP,Go语言
+title = "Ubuntu 下 nginx , php , mysql 和 golang 的简单安装"
+slug = "ubuntu-lnmp-golang-installation"
+date = "2014-02-19 21:56:39"
+author = "fuxiaohei"
+tags = ["LNMP","Go"]
 
 ```
 

@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Martini源码剖析
-slug = martini-source-study
-date = 2014-04-24 01:04:18
-date = 2014-04-24 01:04:18
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,Martini,源码
+title = "Martini源码剖析"
+slug = "martini-source-study"
+date = "2014-04-24 01:04:18"
+author = "fuxiaohei"
+tags = ["Go","Martini","源码"]
 
 ```
 

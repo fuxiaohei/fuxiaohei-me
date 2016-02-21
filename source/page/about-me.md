@@ -1,14 +1,8 @@
-```ini
-
-title = 关于
-slug = about-me
-date = 2014-01-19 16:16:24
-date = 2014-01-19 16:16:24
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-hover = about
-
+```toml
+title = "关于"
+date = "2014-01-19 16:16:24"
+author = "fuxiaohei"
+hover = "about"
 ```
 
 ### 关于小站

@@ -1,14 +1,9 @@
-```ini
-
-title = Gopher China 大会
-slug = gopher-china-2015
-date = 2015-04-29 00:00:34
-date = 2015-04-29 00:00:34
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go
-
+```toml
+title = "Gopher China 大会"
+slug = "gopher-china-2015"
+date = "2015-04-29 00:00:34"
+author = "fuxiaohei"
+tags = ["Go","GopherCon"]
 ```
 
 前两天去上海参加 [**Gopher China 2015**](http://gopherchina.org) 大会，见到很多久闻大名的大神和朋友，感觉很好。而且看到许多的企业，尤其是大企业都已经开始成规模的使用 golang，说明 golang 本身的设计和性能，已经受到了大家的认可。当然其实有很多的话题，不局限在 golang 了。

@@ -1,0 +1,44 @@
+[meta]
+title = "FuXiaohei.Me"
+subtitle = "傅小黑的自留地"
+keyword = "傅小黑,fuxiaohei,blog,go,golang"
+desc = "FuXiaohei.Me - 傅小黑的自留地"
+domain = "fuxiaohei.me"
+root = "http://fuxiaohei.me"
+lang = "zh"
+
+[[nav]]
+link = "/"
+title = "文章"
+i18n = "home"
+hover = "home"
+
+[[nav]]
+link = "/archive"
+title = "归档"
+i18n = "archive"
+hover = "archive"
+
+[[nav]]
+link = "/about-me"
+title = "关于"
+i18n = "about"
+hover = "about"
+
+[[nav]]
+link = "/friends"
+title = "好友"
+i18n = "friends"
+hover = "friends"
+
+[[author]]
+name = "fuxiaohei"
+nick = "傅小黑"
+email = "fuxiaohei@vip.qq.com"
+url = "http://fuxiaohei.me"
+
+[comment]
+disqus = "fuxiaohei"
+
+[analytics]
+baidu = "e11fd929a17fddf281c278e22772672f"

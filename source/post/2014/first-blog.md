@@ -1,13 +1,9 @@
-```ini
-
-title = 换新博客了
-slug = first-blog
-date = 2014-01-19 16:16:24
-date = 2014-01-19 16:16:24
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Fxh.Go
+```toml
+title = "换新博客了"
+slug = "first-blog"
+date = "2014-01-19 16:16:24"
+author = "fuxiaohei"
+tags = ["Go"]
 
 ```
 

@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = 新的开始
-slug = new-born
-date = 2014-01-24 16:47:31
-date = 2014-01-24 16:47:31
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 开始
+title = "新的开始"
+slug = "new-born"
+date = "2014-01-24 16:47:31"
+author = "fuxiaohei"
+tags = ["开始"]
 
 ```
 

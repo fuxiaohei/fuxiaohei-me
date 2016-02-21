@@ -1,13 +1,9 @@
-```ini
-
-title = 更新域名的公告
-slug = change-domain-notice
-date = 2014-02-18 00:32:57
-date = 2014-02-18 00:32:57
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 域名
+```toml
+title = "更新域名的公告"
+slug = "change-domain-notice"
+date = "2014-02-18 00:32:57"
+author = "fuxiaohei"
+tags = ["域名"]
 
 ```
 

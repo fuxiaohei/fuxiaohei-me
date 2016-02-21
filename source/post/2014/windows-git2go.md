@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Windows 下 gcc + golang 编译 git2go
-slug = windows-git2go
-date = 2014-02-18 22:04:12
-date = 2014-02-18 22:04:12
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言
+title = "Windows 下 gcc + golang 编译 git2go"
+slug = "windows-git2go"
+date = "2014-02-18 22:04:12"
+author = "fuxiaohei"
+tags = ["Go","git"]
 
 ```
 

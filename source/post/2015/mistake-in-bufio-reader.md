@@ -1,12 +1,9 @@
-```ini
-title = 我煞笔的被 bufio.Reader 小坑
-slug = mistake-in-bufio-reader
-date = 2015-12-09 20:58:59
-update_date = 2015-12-09 20:58:59
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go
+```toml
+title = "我煞笔的被 bufio.Reader 小坑"
+slug = "mistake-in-bufio-reader"
+date = "2015-12-09 20:58:59"
+author = "fuxiaohei"
+tags = ["Go"]
 ```
 
 最近在用 Go 做一个小型的 `gateway` 服务。PHP 请求 Go 的 tcp server，然后 Go 根据命令参数开启多个 goroutine 去调度 php-fpm 执行不同的脚本并组合结果返回。 想来只是利用 goroutine 的便利并发执行逻辑，如此简单直接。

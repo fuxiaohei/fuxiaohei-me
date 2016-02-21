@@ -1,0 +1,14 @@
+[nav]
+home = "Home"
+archive = "Archive"
+about = "About"
+
+[post]
+list = "All Posts"
+archive = "Archives"
+tag = "Tags"
+readmore = "Read More"
+
+[pager]
+prev = "Prev"
+next = "Next"

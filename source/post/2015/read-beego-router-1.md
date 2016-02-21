@@ -1,14 +1,9 @@
-```ini
-
-title = 阅读 Beego - 路由机制 (1)
-slug = read-beego-router-1
-date = 2015-03-01 10:58:13
-date = 2015-03-01 10:58:13
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go,Beego
-
+```toml
+title = "阅读 Beego - 路由机制 (1)"
+slug = "read-beego-router-1"
+date = "2015-03-01 10:58:13"
+author = "fuxiaohei"
+tags = ["Go","Beego"]
 ```
 
 

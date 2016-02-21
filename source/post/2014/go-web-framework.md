@@ -1,13 +1,10 @@
-```ini
+```toml
 
-title = Go语言的Web框架
-slug = go-web-framework
-date = 2014-03-13 22:18:46
-date = 2014-03-13 22:18:46
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = Go语言,Web,框架
+title = "Go语言的Web框架"
+slug = "go-web-framework"
+date = "2014-03-13 22:18:46"
+author = "fuxiaohei"
+tags = ["Go","Web","框架"]
 
 ```
 

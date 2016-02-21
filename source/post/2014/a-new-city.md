@@ -1,13 +1,9 @@
-```ini
-
-title = 新城市安定好了
-slug = a-new-city
-date = 2014-11-01 19:45:25
-date = 2014-11-01 19:45:25
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-tags = 
+```toml
+title = "新城市安定好了"
+slug = "a-new-city"
+date = "2014-11-01 19:45:25"
+author = "fuxiaohei"
+tags = []
 
 ```
 

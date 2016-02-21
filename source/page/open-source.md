@@ -1,13 +1,9 @@
-```ini
-
-title = 开源
-slug = open-source
-date = 2014-02-27 23:47:46
-date = 2014-02-27 23:47:46
-author = 傅小黑
-author_email = fuxiaohei@vip.qq.com
-author_url = http://fuxiaohei.me/
-hover =
+```toml
+title = "开源"
+slug = "open-source"
+date = "2014-02-27 23:47:46"
+author = "fuxiaohei"
+hover = ""
 
 ```
 
