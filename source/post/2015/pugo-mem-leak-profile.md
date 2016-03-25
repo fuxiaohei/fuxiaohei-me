@@ -1,4 +1,4 @@
-```toml
+﻿```toml
 title = "PuGo 一次内存泄露的调优"
 slug = "pugo-mem-leak-profile"
 date = "2015-10-14 22:58:13"
@@ -25,7 +25,7 @@ go func() {
 
 访问 `http://localhost:6060/debug/pprof/` 就可以查看 pprof 提供的信息。分析内存使用，可以关注 heap 上分配的变量都是哪些内容，访问 `http://localhost:6060/debug/pprof/heap?debug=1` 可以看到如图的数据：
 
-![heap](//media/3bbae75c83000b1cd910df4083b5cd76.png)
+![heap](/media/3bbae75c83000b1cd910df4083b5cd76.png)
 
 来自代码 `github.com/syndtr/goleveldb/leveldb/memdb.New` 的对象在 heap 上最多。 Pugo 的数据库底层是 基于 goleveldb 存储的 tidb 数据库。 goleveldb 有类似于 leveldb 的行为，就是半内存半存储的数据分布。因而，有比较大量的内存对象是正常现象。但是使用 go tool 的时候发现了别的问题：
 
@@ -37,7 +37,7 @@ go tool 暂存下当时的 heap 快照用于分析。同时进入了 pprof 工�
 
 展示占用最多的 10 个对象堆如图：
 
-![heap-top](//media/0c14c53f64bf3f32020bddb87e4e105b.png)
+![heap-top](/media/0c14c53f64bf3f32020bddb87e4e105b.png)
 
 `reflect.Value.call` 是 heap 上最多的调用，呵呵。问题落在标准库上，可能就是 golang 标准库的问题。我本机还是 Go 1.5版本。试着更新了一下 Go 1.5.1 后，发现 heap 上的数据分布没有什么变化。那就不是标准库的问题。
 
@@ -49,7 +49,7 @@ go tool 暂存下当时的 heap 快照用于分析。同时进入了 pprof 工�
 
 时序图中明显有问题的部分：
 
-![heap-svg](//media/0401f49f61bbf182be168c2b104a31e6.png)
+![heap-svg](/media/0401f49f61bbf182be168c2b104a31e6.png)
 
 发现 `tango.(*Context).Next` 是调度的上级。但是 Next() 方法源码中没有 reflect 的调用过程，不够明确。用另一个命令辅助：
 
@@ -57,7 +57,7 @@ go tool 暂存下当时的 heap 快照用于分析。同时进入了 pprof 工�
 
 有图：
 
-![heap-peek](//media/bcd54e59036229210d665a04dcaa4bbd.png)
+![heap-peek](/media/bcd54e59036229210d665a04dcaa4bbd.png)
 
 可以看到上下文方法 `tango.(*Context).Invoke`，代码中发现：
 
