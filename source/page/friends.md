@@ -18,25 +18,20 @@ hover = "friends"
 
 #### 博客好友
 
-* [SudoChina](http://sudochina.com) —— 中国Golang开源问答社区
-* [亲爱的罗伊](http://www.dearroy.com/) —— 我的**VPS**提供商
 * [kn007的个人博客](http://kn007.net/) —— 有些想法的小胖子
-* [Uncle.E](http://shaoao.me/) —— 比我小，还装叔
 * [蚊哥's Blog](http://www.wenge123.com/) —— 中学生，吐槽，伪前端
-* [MR.Lin-吐槽地](http://www.linyousai.cn) —— 技术男，似乎一直被妹子所困
-* [Kayo's Melody](http://kayosite.com/) —— 前端技术男，各种笔记
+* [Kayo's Melody](http://kayosite.com/) —— 前端技术男，也会搞iOS，各种笔记
 * [Xinsenz茶话](http://www.xinsenz.com/) —— 以前折腾，有LP就老实了
-* [独步弈城的博客](http://www.dinghaijun.com/) —— 混迹武汉的屌丝程序员一枚
-* [Libisky](http://libisky.com/) —— 还没定型的菜猿
+* [独步弈城的博客](http://www.dinghaijun.com/) —— 混迹武汉的程序员一枚
+* [Libisky](http://libisky.com/) —— 程序员一枚，似乎在用我写的 PuGo
+* [金哲博客](http://jinzhe.net/) —— 真正的简约是在纷繁中构建秩序
 
 #### 熊孩子们
 
-* [Ben-Lab](http://ben-lab.com/links/) —— 主题作品很漂亮的
+* [Ben-Lab](http://ben-lab.com/) —— 主题作品很漂亮的
 * [Wis's Lab](http://wislab.net/) —— 小孩子们的管理员
 * [M208's Blog](http://m208.pw/) —— 编程入门级初中生
-* [Frank Wei's Blog](http://iamfrankwei.com/) —— 格式化大侠
 * [闪星的空间](http://shansing.com/) —— 桌面编程勇士
-* [Staunchs](http://www.staunchs.com/) ——  Staunchs游戏梦工厂致力于Flash小游戏的开发
 
 
 #### 申请好友
