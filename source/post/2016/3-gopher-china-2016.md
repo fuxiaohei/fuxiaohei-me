@@ -42,6 +42,11 @@ Docker 是 Go 的明星产品，但是已经形成自己的生态。单纯聊 Do
 
 Go 的 HTTP 包已经足够实现 Web API 服务。但是 `html/template` 包的诡异语法对实现繁多复杂页面的 Web 站点并不是很好的选择。[米嘉](https://github.com/mijia)的演讲《Go build web》利用代码生成来满足对应的需求。路由部分继承 Gin 和 Goji 的中间件思路，数据库操作部分使用go generate命令自动生成结构体操作的代码，再开发了一个工具做start-kit的boilerplate做前端资源、热更新等的支持，这几个部分组成了完善的 Go Web 技术栈工具。其实目前很多新手是从 Web 方面开始学习 Go 语言。熟练使用或者自己参照实现类似的技术工具，还是很不靠谱的。如果真要学习，还可以去看看 [goa](http://goa.design/) 这个利用 Go 做 DSL 的代码生成工具。
 
+## Go 与 移动开发
+
+[沈晟](https://github.com/tomasen)沈老板为我们带来了《Golang在移动客户端开发中的应用》。沈老板在比较多的是说团队对 [gomobile] 的探索和尝试。目前 Go 参与 mobile 开发的方式是将一些算法库或者逻辑库编译成 c-archive 或者 .so 嵌入到 app 中，并不是代替 Obj-C 或者 Java 作为主力开发的角色。介绍的内容还都是概念性的演示，还没有实际案例。GopherCon India 有几个关于 mobile 演讲比这次更加激进一些，有兴趣的同学可以去 [看看](https://www.youtube.com/watch?v=4Dr8FXs9aJM&list=PLxFC1MYuNgJT_ynbXGuYAZbSnUnq-6VQA)。
+
+
 ## Go 的细节
 
 Go 开发组的两位外国友人在更加细致的尺度上描述了 Go 语言的一些功能和特性。
