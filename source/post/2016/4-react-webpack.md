@@ -2,6 +2,7 @@
 title = "搭建 React , Babel 和 Webpack"
 slug = "react-babel-webpack-start"
 date = "2016-05-05 19:00:34"
+update_date = "2016-05-06 00:01:01"
 author = "fuxiaohei"
 tags = ["react","babel","webpack"]
 ```
@@ -156,3 +157,10 @@ Version: webpack 1.13.0
 访问 `localhost:8080` 就可以看到 `Hello` 显示在页面上。`webpack-dev-server` 支持热更新和增量编译，可以立即看到新的结果。但是默认不会输出编译好的内容，可以到 `localhost:8080/webpack-dev-server` 查看编译情况。
 
 
+### 后记
+
+公司准备用 React 做项目。我从头到尾说了一下 React, Flux 以及相关工具的说明和使用。而且写了一个简单的例子介绍 SPA 开发需要的库的使用方法。
+
+虽然 `redux` 是目前最炙手可热的 Flux 实现，但是对于公司同事学习成本较高。他们不是太理解 redux 的理念。我推荐他们看简单的 Flux 实现 [alt.js](htto://alt.js.org)。Action-Store 的模型类似 Controller-Model 的模型概念，对后端程序员更容易学习。另外 `react-router` 已经稳定，成为页面路由的必然选择。
+
+之后就看这个项目如何定义和使用组件来实现 SPA 的业务了。
