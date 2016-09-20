@@ -409,6 +409,75 @@ func HttpHandle2(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+### Context
+
+Go 1.7 添加了 `context` 包，用于传递数据和做超时、取消等处理。`*http.Request` 添加了 `r.Context()` 和 `r.WithContext()` 来操作请求过程需要的 `context.Context` 对象。
+
+##### 传递数据
+
+`context` 可以在 `http.HandleFunc` 之间传递数据：
+
+```go
+func handle1(w http.ResponseWriter, r *http.Request) {
+	ctx := context.WithValue(r.Context(), "abc", "xyz123") // 写入 string 到 context
+	handle2(w, r.WithContext(ctx))                         // 传递给下一个 handleFunc
+}
+
+func handle2(w http.ResponseWriter, r *http.Request) {
+	str, ok := r.Context().Value("abc").(string) // 取出的 interface 需要推断到 string
+	if !ok {
+		str = "not string"
+	}
+	w.Write([]byte("context.abc = " + str))
+}
+
+func main() {
+	http.HandleFunc("/", handle1)
+	if err := http.ListenAndServe(":12345", nil); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
+}
+```
+
+##### 处理超时的请求
+
+利用 `context.WithTimeout` 可以创建会超时结束的 context，用来处理业务超时的情况：
+
+```go
+func HttpHandle(w http.ResponseWriter, r *http.Request) {
+	ctx, cancelFn := context.WithTimeout(r.Context(), 1*time.Second)
+
+	// cancelFn 关掉 WithTimeout 里的计时器
+	// 如果 ctx 超时，计时器会自动关闭，但是如果没有超时就执行到 <-resCh,就需要手动关掉
+	defer cancelFn()
+
+	// 把业务放到 goroutine 执行， resCh 获取结果
+	resCh := make(chan string, 1)
+	go func() {
+        // 故意写业务超时
+		time.Sleep(5 * time.Second)
+		resCh <- r.FormValue("abc")
+	}()
+
+	// 看 ctx 超时还是 resCh 的结果先到达
+	select {
+	case <-ctx.Done():
+		w.WriteHeader(http.StatusGatewayTimeout)
+		w.Write([]byte("http handle is timeout:" + ctx.Err().Error()))
+	case r := <-resCh:
+		w.Write([]byte("get: abc = " + r))
+	}
+}
+
+func main() {
+	http.HandleFunc("/", HttpHandle)
+	if err := http.ListenAndServe(":12345", nil); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
+}
+
+```
+
 ### Hijack
 
 // todo
