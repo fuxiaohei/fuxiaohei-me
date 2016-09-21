@@ -157,8 +157,8 @@ if err := http.ListenAndServe(":12345", nil); err != nil {
 
 ```go
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
-	postValue := r.FormValue("abc")
-	w.Write([]byte("GET: abc=" + postValue))
+	value := r.FormValue("abc")
+	w.Write([]byte("GET: abc=" + value))
 }
 ```
 
@@ -175,7 +175,9 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-注意，这四个值 `v1,v2,v3,v4` 是相同的值。如果同一个表单域传递了多个值，需要直接操作 `r.Form` 或 `r.PostForm`，比如 `GET /?abc=123&abc=abc&abc=xyz`：
+注意，这四个值 `v1,v2,v3,v4` 是相同的值。
+
+如果同一个表单域传递了多个值，需要直接操作 `r.Form` 或 `r.PostForm`，比如 `GET /?abc=123&abc=abc&abc=xyz`：
 
 ```go
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
@@ -189,11 +191,11 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 
 访问 `http://localhost:12345/?abc=123&abc=abc&abc=xyz` 可以看到内容 `GET abc=123,abc,xyz`。
 
-表单数据存储在 `r.Form`，是 `map[string][]string`，即支持一个表单域多个值的情况。**`r.FormValue()` 只获取第一个值**。
+表单数据存储在 `r.Form`，是 `map[string][]string` 类型，即支持一个表单域多个值的情况。**r.FormValue() 只获取第一个值**。
 
 ##### Body 消息体
 
-无论表单数据，还是上传的二进制数据，都是保存在 HTTP 的 Body 中的。操作 `*http.Request.Body` 可以获取到内容。但是注意 `*http.Request.Body` 是 `io.ReadCloser`，只能一次性读取完整，**第二次就是空的**。
+无论表单数据，还是上传的二进制数据，都是保存在 HTTP 的 Body 中的。操作 `*http.Request.Body` 可以获取到内容。但是注意 `*http.Request.Body` 是 `io.ReadCloser` 类型，只能一次性读取完整，**第二次就是空的**。
 
 ```go
 func HttpHandle(w http.ResponseWriter, r *http.Request) {
@@ -203,7 +205,7 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(500)
 		return
 	}
-    DoSomething(body) // 尽量使用已经读出的 Body 内容，不要再去读取 r.Body 
+    DoSomething(body) // 尽量使用已经读出的 body 内容，不要再去读取 r.Body 
 	w.Write([]byte("body:"))
 	w.Write(body)
 }
@@ -211,7 +213,7 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 
 使用 `curl` 命令行发送 POST 数据到服务器，`curl -X POST --data "abcdefg" http://localhost:12345/`,可以看到返回内容 `body:abcdefg`。
 
-根据 HTTP 协议，如果请求的 `Content-Type: application/x-www-form-urlencoded`，Body 中的数据就是类似 `abc=123&abc=abc&abc=xyz` 格式的数据，也就是常规的 **表单数据**。这些使用 `r.ParseForm()` 然后操作 `r.Form` 处理数据。如果是直接的文本数据，比如 `abcdefg` 甚至 **JSON** 数据，你才需要直接操作 Body 的。比如接收 JSON 数据：
+根据 HTTP 协议，如果请求的 `Content-Type: application/x-www-form-urlencoded`，Body 中的数据就是类似 `abc=123&abc=abc&abc=xyz` 格式的数据，也就是常规的 **表单数据**。这些使用 `r.ParseForm()` 然后操作 `r.Form` 处理数据。如果是纯数据，比如文本`abcdefg` 、 **JSON** 数据等，你才需要直接操作 Body 的。比如接收 JSON 数据：
 
 ```go
 
