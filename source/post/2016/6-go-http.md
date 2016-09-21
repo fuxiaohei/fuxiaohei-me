@@ -93,6 +93,39 @@ func main() {
 }
 ```
 
+##### http.Handler/http.HandlerFunc 中间件
+
+Go 的 HTTP 处理过程可以不仅是一个 `http.HandlerFunc`，而且是一组 `http.HandlerFunc`，比如：
+
+```go
+func handle1(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("handle1"))
+}
+
+func handle2(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("handle2"))
+}
+
+// 把几个函数组合起来
+func makeHandlers(handlers ...http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		for _, handler := range handlers {
+			handler(w, r)
+		}
+	}
+}
+
+func main() {
+	http.HandleFunc("/", makeHandlers(handle1, handle2))
+	if err := http.ListenAndServe(":12345", nil); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
+}
+```
+
+这种模式开发的框架可以参考 [negroni](https://github.com/urfave/negroni)。它的中间件都是以实现 `http.Handler` 的结构体来组合的。
+
+
 ### Request
 
 HTTP 过程的操作主要是针对客户端发来的请求数据在 `*http.Request`，和返回给客户端的 `http.ResponseWriter` 两部分。
@@ -409,6 +442,8 @@ func HttpHandle2(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+返回 JSON, XML 和 渲染模板的内容等的代码例子，可以参考 [HTTP Response Snippets for Go](http://www.alexedwards.net/blog/golang-response-snippets)。
+
 ### Context
 
 Go 1.7 添加了 `context` 包，用于传递数据和做超时、取消等处理。`*http.Request` 添加了 `r.Context()` 和 `r.WithContext()` 来操作请求过程需要的 `context.Context` 对象。
@@ -468,24 +503,178 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("get: abc = " + r))
 	}
 }
+```
 
-func main() {
-	http.HandleFunc("/", HttpHandle)
-	if err := http.ListenAndServe(":12345", nil); err != nil {
-		fmt.Println("start http server fail:", err)
-	}
+##### 带 context 的中间件
+
+Go 的很多 HTTP 框架使用 `context` 或者自己定义的 `Context` 结果作为 `http.Handler` 中间件之间数据传递的媒介，比如 [xhandler](https://github.com/rs/xhandler):
+
+```go
+import(
+	"context"
+	"github.com/rs/xhandler"
+	
+)
+
+type myMiddleware struct {
+    next xhandler.HandlerC
 }
 
+func (h myMiddleware) ServeHTTPC(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+    ctx = context.WithValue(ctx, "test", "World")
+    h.next.ServeHTTPC(ctx, w, r)
+}
+
+func main() {
+    c := xhandler.Chain{}
+	c.UseC(func(next xhandler.HandlerC) xhandler.HandlerC {
+        return myMiddleware{next: next}
+    })
+}
 ```
+
+`xhandler` 封装 `ServeHTTPC(ctx context.Context, w http.ResponseWriter, r *http.Request)` 用于类似 `http.Handler` 的 `ServeHTTP(w http.ResponseWriter, r *http.Request)` 的行为，处理 HTTP 的过程。 
 
 ### Hijack
 
-// todo
+一些时候需要直接操作 Go 的 HTTP 连接时，使用 `Hijack()` 将 HTTP 对应的 TCP 取出。连接在 `Hijack()` 之后，HTTP 的相关操作会受到影响，连接的管理需要用户自己操作，而且例如 `w.Write([]byte)` 不会返回内容，需要操作 `Hijack()` 后的 `*bufio.ReadWriter`。
 
-### Template
+```go
+func HttpHandle(w http.ResponseWriter, r *http.Request) {
+	hj, ok := w.(http.Hijacker)
+	if !ok {
+		return
+	}
+	conn, buf, err := hj.Hijack()
+	if err != nil {
+		w.WriteHeader(500)
+		return
+	}
+	defer conn.Close()       // 需要手动关闭连接
+	w.Write([]byte("hello")) // 会提示 http: response.Write on hijacked connection
 
-// todo
+	// 返回内容需要
+	buf.WriteString("hello")
+	buf.Flush()
+}
+```
 
-### Server 的细节使用
+`Hijack` 主要看到的用法是对 HTTP 的 Upgrade 时在用，比如从 HTTP 到 Websocket 时，[golang.org/x/net/websocket](https://github.com/golang/net/blob/master/websocket/server.go#L73):
 
-// todo
+```go
+func (s Server) serveWebSocket(w http.ResponseWriter, req *http.Request) {
+	rwc, buf, err := w.(http.Hijacker).Hijack()
+	if err != nil {
+		panic("Hijack failed: " + err.Error())
+	}
+	// The server should abort the WebSocket connection if it finds
+	// the client did not send a handshake that matches with protocol
+	// specification.
+	defer rwc.Close()
+	conn, err := newServerConn(rwc, buf, req, &s.Config, s.Handshake)
+	if err != nil {
+		return
+	}
+	if conn == nil {
+		panic("unexpected nil conn")
+	}
+	s.Handler(conn)
+}
+```
+
+### http.Server 的使用细节
+
+上面所有的代码我都是用的 `http.ListenAndServe` 来启动 HTTP 服务。实际上执行这个过程的 `*http.Server` 这个结构。有些时候我们不是使用默认的行为，会给 `*http.Server` 定义更多的内容。
+
+`http.ListenAndServe` 默认的 `*http.Server` 是没有超时设置的。一些场景下你必须设置超时，否则会遇到太多连接句柄的问题：
+
+```go
+func main() {
+	server := &http.Server{
+		Handler:      MyHandler{}, // 使用实现 http.Handler 的结构处理 HTTP 数据
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
+	// 监听 TCP 端口，把监听器交给 *http.Server 使用
+	ln, err := net.Listen("tcp", ":12345")
+	if err != nil {
+		panic("listen :12345 fail:" + err.Error())
+	}
+	if err = server.Serve(ln); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
+}
+```
+
+有朋友用 Beego 的时候希望同时监听两个端口提供一样数据操作的 HTTP 服务。这个需求就可以利用 `*http.Server` 来实现：
+
+```go
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/context"
+)
+
+func main() {
+	beego.Get("/", func(ctx *context.Context) {
+		ctx.WriteString("abc")
+	})
+	go func() { // server 的 ListenAndServe 是阻塞的，应该在另一个 goroutine 开启另一个server
+		server2 := &http.Server{
+			Handler: beego.BeeApp.Handlers, // 使用实现 http.Handler 的结构处理 HTTP 数据
+			Addr:    ":54321",
+		}
+		if err := server2.ListenAndServe(); err != nil {
+			fmt.Println("start http server2 fail:", err)
+		}
+	}()
+	server1 := &http.Server{
+		Handler: beego.BeeApp.Handlers, // 使用实现 http.Handler 的结构处理 HTTP 数据
+		Addr:    ":12345",
+	}
+	if err := server1.ListenAndServe(); err != nil {
+		fmt.Println("start http server1 fail:", err)
+	}
+}
+```
+
+这样访问 `http://localhost:12345` 和 `http://localhost:54321` 都可以看到返回 `abc` 的内容。
+
+### HTTPS
+
+随着互联网安全的问题日益严重，许多的网站开始使用 HTTPS 提供服务。Go 创建一个 HTTPS 服务是很简便的：
+
+```go
+import (
+	"fmt"
+	"net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, HTTPS Server")
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	http.ListenAndServeTLS(":12345",
+		"server.crt",
+		"server.key", nil)
+}
+```
+
+`ListenAndServeTLS` 新增了两个参数 `certFile` 和 `keyFile`。HTTPS的数据传输是加密的。实际使用中，HTTPS利用的是对称与非对称加密算法结合的方式，需要加密用的公私密钥对进行加密，也就是 `server.crt` 和 `server.key` 文件。具体的生成可以阅读 `openssl` 的文档。
+
+关于 Go 和 HTTPS 的内容，可以阅读 **Tony Bai** 的 [Go 和 HTTPS](http://tonybai.com/2015/04/30/go-and-https/)。
+
+### 总结
+
+Go 的 `net/http` 包为开发者提供很多便利的方法的，可以直接开发不复杂的 Web 应用。还可以使用一些简单的库类辅助开发。
+
+表单绑定：[https://github.com/mholt/binding](https://github.com/mholt/binding)
+
+路由：[https://github.com/julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)
+
+各种 Web 框架 : [awesome-go#web-frameworks](https://github.com/avelino/awesome-go#web-frameworks)
+
