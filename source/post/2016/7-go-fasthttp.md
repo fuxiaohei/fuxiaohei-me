@@ -38,5 +38,36 @@ func main() {
 }
 ```
 
+### 路由
+
+`net/http` 提供 `http.ServeMux` 实现路由服务，但是匹配规则简陋，功能很简单，基本不会使用。`fasthttp` 吸取教训，默认没有提供路由支持。因此使用第三方的 `fasthttp` 的路由库 [fasthttprouter](https://github.com/buaazp/fasthttprouter) 来辅助路由实现：
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/buaazp/fasthttprouter"
+	"github.com/valyala/fasthttp"
+)
+
+// fasthttprouter.Params 是路由匹配得到的参数，如规则 /hello/:name 中的 :name
+func httpHandle(ctx *fasthttp.RequestCtx, _ fasthttprouter.Params) {
+	fmt.Fprintf(ctx, "hello fasthttp")
+}
+
+func main() {
+    // 使用 fasthttprouter 创建路由
+	router := fasthttprouter.New()
+	router.GET("/", httpHandle)
+	if err := fasthttp.ListenAndServe("0.0.0.0:12345", router.Handler); err != nil {
+		fmt.Println("start fasthttp fail:", err.Error())
+	}
+}
+```
+
+之后的代码都是适配 `fasthttprouter` 的 httpHandle 为例。
+
 ### RequestCtx 操作
 
