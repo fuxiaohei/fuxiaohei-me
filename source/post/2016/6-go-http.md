@@ -2,12 +2,12 @@
 title = "Go 开发 HTTP"
 slug = "go-and-http-server"
 date = "2016-09-20 20:00:34"
-update_date = "2016-09-20 20:00:35"
+update_date = "2016-09-23 11:00:35"
 author = "fuxiaohei"
 tags = ["Go","Golang","入门","HTTP"]
 ```
 
-Go 是一门新语言。很多人都是用 Go 来开发 Web 服务。Web 开发很多同学急于求成，直接使用 [beego](#), [echo](#) 或 [iris](#) 等知名框架。对标准库 `net/http` 的了解甚少。这里我就主要聊一下标准库 `net/http` 开发 Web 服务时的使用细节。
+Go 是一门新语言。很多人都是用 Go 来开发 Web 服务。Web 开发很多同学急于求成，直接使用 [beego](https://github.com/astaxie/beego), [echo](https://github.com/labstack/echo) 或 [iris](https://github.com/kataras/iris) 等知名框架。对标准库 `net/http` 的了解甚少。这里我就主要聊一下标准库 `net/http` 开发 Web 服务时的使用细节。
 
 ### 创建 HTTP 服务
 
@@ -88,6 +88,47 @@ func main() {
 ```go
 func main() {
 	if err := http.ListenAndServe(":12345", MyHandler{}); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
+}
+```
+
+##### http.ServeMux 路由
+
+`net/http` 提供了一个非常简单的路由结构 `http.ServeMux`。方法 `http.HandleFunc()` 和 `http.Handler()` 就是把路由规则和对应函数注册到默认的一个 `http.ServeMux` 上。当然，你可以自己创建 `http.ServeMux` 来使用：
+
+```go
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, HTTP Server")
+}
+
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", handler)
+	http.ListenAndServe(":12345", mux)
+}
+```
+
+但是因为 `http.ServeMux` 路由规则简单，功能有限，实践都不会用的，如同鸡肋。更推荐使用 [httprouter](https://github.com/julienschmidt/httprouter)。
+
+```go
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/julienschmidt/httprouter"
+)
+
+// httprouter.Params 是匹配到的路由参数，比如规则 /user/:id 中 的 :id 的对应值
+func handle(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	fmt.Fprint(w, "hello, httprouter")
+}
+
+func main() {
+	router := httprouter.New()
+	router.GET("/", handle)
+
+	if err := http.ListenAndServe(":12345", router); err != nil {
 		fmt.Println("start http server fail:", err)
 	}
 }
@@ -192,6 +233,33 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 访问 `http://localhost:12345/?abc=123&abc=abc&abc=xyz` 可以看到内容 `GET abc=123,abc,xyz`。
 
 表单数据存储在 `r.Form`，是 `map[string][]string` 类型，即支持一个表单域多个值的情况。**r.FormValue() 只获取第一个值**。
+
+表单数据是简单的 kv 对应，很容易实现 kv 到 结构体的一一对应，例如使用库 [https://github.com/mholt/binding](https://github.com/mholt/binding)：
+
+```go
+type User struct {
+	Id   int
+	Name string
+}
+
+func (u *User) FieldMap(req *http.Request) binding.FieldMap {
+	return binding.FieldMap{
+		&u.Id: "user_id",
+		&u.Name: binding.Field{
+			Form:     "name",
+			Required: true,
+		},
+	}
+}
+
+func handle(w http.ResponseWriter, r *http.Request) {
+	user := new(User)
+	errs := binding.Bind(r, user)
+	if errs.Handle(w) {
+		return
+	}
+}
+```
 
 ##### Body 消息体
 
@@ -391,7 +459,8 @@ func HttpHandle(w http.ResponseWriter, r *http.Request) {
 		ResponseWriter: w,
 		bodyBytes:      bytes.NewBuffer(nil),
 	}
-	m.Write([]byte("Hello World"))
+	m.Header().Add("Content-Type", "text/html") // 要输出HTML记得加头信息
+	m.Write([]byte("<h1>Hello World</h1>"))
 	m.Write([]byte("abcxyz"))
 	fmt.Println("body:", string(m.Body()))
 }
@@ -532,6 +601,14 @@ func main() {
 	c.UseC(func(next xhandler.HandlerC) xhandler.HandlerC {
         return myMiddleware{next: next}
     })
+	xh := xhandler.HandlerFuncC(func(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+        value := ctx.Value("test").(string) // 使用 context 传递的数据
+        w.Write([]byte("Hello " + value))
+    })
+	http.Handle("/", c.Handler(xh)) // 将 xhandler.Handler 转化为 http.Handler
+	if err := http.ListenAndServe(":12345", nil); err != nil {
+		fmt.Println("start http server fail:", err)
+	}
 }
 ```
 
@@ -672,11 +749,7 @@ func main() {
 
 ### 总结
 
-Go 的 `net/http` 包为开发者提供很多便利的方法的，可以直接开发不复杂的 Web 应用。还可以使用一些简单的库类辅助开发。
-
-表单绑定：[https://github.com/mholt/binding](https://github.com/mholt/binding)
-
-路由：[https://github.com/julienschmidt/httprouter](https://github.com/julienschmidt/httprouter)
+Go 的 `net/http` 包为开发者提供很多便利的方法的，可以直接开发不复杂的 Web 应用。如果需要复杂的路由功能，及更加集成和简便的 HTTP 操作，推荐使用一些 Web 框架。
 
 各种 Web 框架 : [awesome-go#web-frameworks](https://github.com/avelino/awesome-go#web-frameworks)
 
