@@ -19,7 +19,7 @@ tags = ["Go","Golang"]
 go get -u github.com/jteeuwen/go-bindata/...
 ```
 
-***注意 go get 地址最后的三个点 `...`***。这样会分析所有子目录并下载依赖编译子目录内容。`go-bindata` 的命令工具在子目录中。（还要记得把 `$GOPATH/bin` 加入系统 `PATH`）。
+**注意 go get 地址最后的三个点 `...`**。这样会分析所有子目录并下载依赖编译子目录内容。`go-bindata` 的命令工具在子目录中。（还要记得把 `$GOPATH/bin` 加入系统 `PATH`）。
 
 
 使用命令工具 `go-bindata` （ pugo 的例子）：
@@ -34,15 +34,10 @@ pugo 里释放静态文件的代码：
 
 ```go
 dirs := []string{"source", "theme", "doc"} // 设置需要释放的目录
-isSuccess := true
 
-var (
-    err       error
-    isExtract = true
-)
 for _, dir := range dirs {
     // 解压dir目录到当前目录
-    if err = asset.RestoreAssets("./", dir); err != nil {
+    if err := asset.RestoreAssets("./", dir); err != nil {
         isSuccess = false
         break
     }
@@ -56,5 +51,88 @@ if !isSuccess {
 
 `asset.go` 内的静态内容还是根据实际的目录位置索引。所以我们可以直接通过目录或者文件地址去操作。
 
+<!--more-->
+
 ##### 开发模式
 
+`go-bindata` 支持开发模式，即不嵌入静态内容，只生成操作方法到输出的 go 代码中，如：
+
+```
+go-bindata -debug -o=app/asset/asset.go -pkg=asset source/... theme/... doc/source/... doc/theme/... 
+```
+
+`-debug` 参数开启开发模式。生成的代码会直接去读取静态文件到内存，而不是编码到代码中。代码文件更小，你更快速的编写业务逻辑。
+
+```go
+// -pkg=asset, 打包的包名是 asset
+bytes, err := asset.Asset("theme/default/post.html")    // 根据地址获取对应内容
+if err != nil {
+    fmt.Println(err)
+    return
+}
+t, err := template.New("tpl").Parse(string(bytes))      // 比如用于模板处理
+fmt.Println(t, err)
+```
+
+##### http.FileSystem
+
+`http.FileSystem` 是定义 HTTP 静态文件服务的接口。`go-bindata` 的第三方包 [go-bindata-assetfs](https://github.com/elazarl/go-bindata-assetfs) 实现了这个接口，支持 HTTP 访问静态文件目录的行为。以我们上面编译好的 `asset.go` 为例：
+
+```go
+import (
+	"net/http"
+
+	"github.com/elazarl/go-bindata-assetfs"
+	"github.com/go-xiaohei/pugo/app/asset" // 用 pugo 的asset.go进行测试
+)
+
+func main() {
+	fs := assetfs.AssetFS{
+		Asset:     asset.Asset,
+		AssetDir:  asset.AssetDir,
+		AssetInfo: asset.AssetInfo,
+	}
+	http.Handle("/", http.FileServer(&fs))
+	http.ListenAndServe(":12345", nil)
+}
+```
+
+访问 `http://localhost:12345`，就可以看到嵌入的 `source`,`theme`,`doc` 的目录列表页面，和 Nginx 查看静态文件目录一样的。
+
+### go.rice
+
+[go.rice](#) 也支持打包静态文件到 go 文件中，但是行为和 `go-bindata` 很不相同。从使用角度，`go.rice` 其实是更便捷的静态文件操作库。打包静态文件反而是顺带的功能。
+
+安装和 `go-bindata` 一样，注意 **三个点**：
+
+```
+go get github.com/GeertJohan/go.rice/...
+```
+
+`go.rice` 把一个目录认为是一个 `rice.Box` 操作：
+
+```go
+import (
+	"fmt"
+	"html/template"
+
+	"github.com/GeertJohan/go.rice"
+)
+
+func main() {
+    // 这里写相对于的执行文件的地址
+	box, err := rice.FindBox("theme/default")
+	if err != nil {
+		println(err.Error())
+		return
+	}
+    // 从目录 Box 读取文件
+	str, err := box.String("post.html")
+	if err != nil {
+		println(err.Error())
+		return
+	}
+	t, err := template.New("tpl").Parse(str)
+	fmt.Println(t, err)
+}
+```
