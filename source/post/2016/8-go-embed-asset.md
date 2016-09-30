@@ -53,7 +53,7 @@ if !isSuccess {
 
 <!--more-->
 
-##### 开发模式
+##### -debug 开发模式
 
 `go-bindata` 支持开发模式，即不嵌入静态内容，只生成操作方法到输出的 go 代码中，如：
 
@@ -152,22 +152,22 @@ rice -i "github.com/fuxiaohei/xyz" embed-go // -i 处理指定包里的 go.rice 
 
 `go.rice` 是直接支持 `http.FileSystem` 接口：
 
-```
+```go
 func main() {
 	// MustFindBox 出错直接 panic
 	http.Handle("/", http.FileServer(rice.MustFindBox("theme").HTTPBox()))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":12345", nil)
 }
 ```
 
 有点略繁琐的是 `rice.FindBox(dir)` 只能加载一个目录。因此需要多个目录的场景，会有代码：
 
-```
+```go
 func main() {
 	http.Handle("/img", http.FileServer(rice.MustFindBox("static/img").HTTPBox()))
 	http.Handle("/css", http.FileServer(rice.MustFindBox("static/css").HTTPBox()))
 	http.Handle("/js", http.FileServer(rice.MustFindBox("static/js").HTTPBox()))
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":12345", nil)
 }
 ```
 
@@ -184,7 +184,8 @@ go get github.com/mjibson/esc
 使用方法和 `go-bindata` 类似：
 
 ```
-go-bindata -o=asset/asset.go -pkg=asset source/... theme/... doc/source/... doc/theme/... 
+// 注意 esc 不支持 source/... 三个点表示所有子目录
+go-bindata -o=asset/asset.go -pkg=asset source theme doc/source doc/theme
 ```
 
 直接支持 `http.FileSystem`：
@@ -197,6 +198,41 @@ import (
 
 func main() {
 	fmt.Println(asset.FSString(false, "/theme/default/post.html")) 		// 读取单个文件
-	http.ListenAndServe(":12345", http.FileServer(asset.FS(false))) 	// 支持 http.FileSystem
+	http.ListenAndServe(":12345", http.FileServer(asset.FS(false))) 	// 支持 http.FileSystem，但是没有做展示目录的支持
 }
 ```
+
+`esc` 有个较大的问题是只能一个一个文件操作，不能文件夹操作，没有类似`go-bindata` 的 `asset.RestoreDir()` 方法。并且没有方法可以列出嵌入的文件的列表，导致也无法一个一个文件操作，除非自己写死。这是我不使用他的最大原因。
+
+## go generate
+
+嵌入静态资源的工具**推荐配合 go generate** 使用。例如 `pugo` 的入口文件就有：
+
+```go
+package main
+
+import (
+	"os"
+	"time"
+
+	"github.com/go-xiaohei/pugo/app/command"
+	"github.com/go-xiaohei/pugo/app/vars"
+	"github.com/urfave/cli"
+)
+
+//go:generate go-bindata -o=app/asset/asset.go -pkg=asset source/... theme/... doc/source/... doc/theme/...
+
+// ......
+```
+
+在编译的时候执行：
+
+```
+go generate && go build
+```
+
+这个是 `go generate` 的基本用法。更详细的了解可以看 [官方博文](https://blog.golang.org/generate)。
+
+### 总结
+
+我在开发 `pugo` 的时候对这几款嵌入静态资源的程序进行了测试。`go.rice` 并不是我想要的模式，就没有考虑。`esc` 提供的操作方法太少，无法满足程序开发的需要。最后选择 `go-bindata`。但是 `go-bindata` 和 `go.rice` 都是将纯字符数据或 []byte 字符数据写入 go 文件，内容非常大。`esc` 是写入 gzip 压缩流的 Base64 编码。经过压缩后 go 代码的大小明显更少（我嵌入的都是模板等文本文件）。可见库类都有各自的优缺点。倘若有 `go-bindata` 那样丰富的 API，又有 `esc` 那样嵌入压缩过的字符数据，那该多好。
