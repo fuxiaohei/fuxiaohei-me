@@ -136,3 +136,67 @@ func main() {
 	fmt.Println(t, err)
 }
 ```
+
+##### rice 命令
+
+`go.rice` 的打包命令是 `rice`。用起来非常直接：**在有使用 go.rice 操作的  go 代码目录**，直接执行 `rice embed-go`:
+
+```
+rice embed-go
+rice -i "github.com/fuxiaohei/xyz" embed-go // -i 处理指定包里的 go.rice 操作
+```
+
+他就会生成当前包名下的、嵌入了文件的代码 `rice-box.go`。但是，它**不递归处理 import**。他会分析当前目录下的 go 代码中 `go.rice` 的使用，找到对应需要嵌入的文件夹。但是子目录下的和 `import` 的里面的 `go.rice` 使用不会分析，需要你手动 cd 过去或者 `-i` 指定要处理的包执行命令。这点来说非常的不友好。
+
+##### http.FileSystem
+
+`go.rice` 是直接支持 `http.FileSystem` 接口：
+
+```
+func main() {
+	// MustFindBox 出错直接 panic
+	http.Handle("/", http.FileServer(rice.MustFindBox("theme").HTTPBox()))
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+有点略繁琐的是 `rice.FindBox(dir)` 只能加载一个目录。因此需要多个目录的场景，会有代码：
+
+```
+func main() {
+	http.Handle("/img", http.FileServer(rice.MustFindBox("static/img").HTTPBox()))
+	http.Handle("/css", http.FileServer(rice.MustFindBox("static/css").HTTPBox()))
+	http.Handle("/js", http.FileServer(rice.MustFindBox("static/js").HTTPBox()))
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+### esc
+
+[esc](https://github.com/mjibson/esc) 的作者在[研究](https://mattjibson.com/blog/2014/11/19/esc-embedding-static-assets/)几款嵌入静态资源的工具后，发觉都不好用，就自己写出了 `esc`。它的需求很简单，就是嵌入静态资源 和 支持 `http.FileSystem`。`esc` 工具也这两个主要功能。
+
+安装 `esc`:
+
+```
+go get github.com/mjibson/esc
+```
+
+使用方法和 `go-bindata` 类似：
+
+```
+go-bindata -o=asset/asset.go -pkg=asset source/... theme/... doc/source/... doc/theme/... 
+```
+
+直接支持 `http.FileSystem`：
+
+```go
+import (
+	"net/http"
+	"asset" // esc 生成 asset/asset.go 
+)
+
+func main() {
+	fmt.Println(asset.FSString(false, "/theme/default/post.html")) 		// 读取单个文件
+	http.ListenAndServe(":12345", http.FileServer(asset.FS(false))) 	// 支持 http.FileSystem
+}
+```
