@@ -28,6 +28,7 @@ hover = "friends"
 
 #### 熊孩子们
 
+* [Tuccuay's Blog](http://www.tuccuay.com/) —— 奇怪的学弟
 * [Ben-Lab](http://ben-lab.com/) —— 主题作品很漂亮的
 * [Wis's Lab](http://wislab.net/) —— 小孩子们的管理员
 * [M208's Blog](http://m208.pw/) —— 编程入门级初中生
