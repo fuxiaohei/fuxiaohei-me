@@ -2,7 +2,7 @@
 title = "Go 开发 HTTP 的另一个选择 fasthttp"
 slug = "go-and-fasthttp-server"
 date = "2016-09-24 20:00:34"
-update_date = "2016-09-24 20:00:35"
+update_date = "2017-03-04 22:00:35"
 author = "fuxiaohei"
 tags = ["Go","Golang","入门","HTTP","fasthttp"]
 ```
@@ -62,7 +62,7 @@ func httpHandle(ctx *fasthttp.RequestCtx) {
 func main() {
     // 使用 fasthttprouter 创建路由
 	router := fasthttprouter.New()
-	router.GET("/", httpHandle)
+	router.GET("/hello/:name", httpHandle)
 	if err := fasthttp.ListenAndServe("0.0.0.0:12345", router.Handler); err != nil {
 		fmt.Println("start fasthttp fail:", err.Error())
 	}
