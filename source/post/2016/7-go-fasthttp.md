@@ -54,9 +54,9 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-// fasthttprouter.Params 是路由匹配得到的参数，如规则 /hello/:name 中的 :name
-func httpHandle(ctx *fasthttp.RequestCtx, _ fasthttprouter.Params) {
-	fmt.Fprintf(ctx, "hello fasthttp")
+// fasthttprouter.RequestCtx.UserValue() 可以获得路由匹配得到的参数，如规则 /hello/:name 中的 :name
+func httpHandle(ctx *fasthttp.RequestCtx) {
+	fmt.Fprintf(ctx, "hello, %s!\n", ctx.UserValue("name"))
 }
 
 func main() {
