@@ -2,7 +2,7 @@
 title = "Go 开发 HTTP"
 slug = "go-and-http-server"
 date = "2016-09-20 20:00:34"
-update_date = "2016-09-23 11:00:35"
+update_date = "2017-03-04 22:00:35"
 author = "fuxiaohei"
 tags = ["Go","Golang","入门","HTTP"]
 ```
@@ -49,7 +49,7 @@ func main() {
     http.HandleFunc("/abc", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello, Go HTTP abc"))
 	})
-	if err := http.ListenAndServe(":123456", nil); err != nil {
+	if err := http.ListenAndServe(":12345", nil); err != nil {
 		fmt.Println("start http server fail:", err)
 	}
 }
