@@ -1,5 +1,5 @@
 ```toml
-title = "Gopher China 大会"
+title = "第一届 Gopher China 大会"
 slug = "gopher-china-2015"
 date = "2015-04-29 00:00:34"
 author = "fuxiaohei"
@@ -8,14 +8,13 @@ tags = ["Go","GopherCon","GopherChina"]
 
 前两天去上海参加 [**Gopher China 2015**](http://gopherchina.org) 大会，见到很多久闻大名的大神和朋友，感觉很好。而且看到许多的企业，尤其是大企业都已经开始成规模的使用 golang，说明 golang 本身的设计和性能，已经受到了大家的认可。当然其实有很多的话题，不局限在 golang 了。
 
-<!--more-->
-
 ## Go 语言核心
 
 最重量级的话题，就是 [雨痕](http://weibo.com/qyuhen) 的 《Go 1.4 Runtime》。主要说了 Go 的内存分配器、垃圾回收器和goroutine调度器三块内容。我之前阅读过他的 [《Go 语言笔记》](https://github.com/qyuhen/book) ，非常不错。很详细的阐述了 Go 语言本身的实现设计，同时为更合理的利用 golang 提供一些参考。 再加上他本人也很低调，真的是 **隐士高人** 的感觉。这次的他的演讲也相当不错。流畅的思路和平和的语言，而且不时的有诙谐幽默，让人听起来很有意思。唯一的遗憾是，他准备的ppt其实可以讲到3个小时，可惜会程只有45min，尽管大家还是争取多听了一些，但还是意犹未尽。
 
 另一个超级话题，是 Robert Griesemer 的演讲。他是 Go 的三位作者之一，也是 Google V8 和 Java Hotspot VM 开发者之一，相当巨大的光环！他的演讲是关于 [gofmt](https://golang.org/cmd/gofmt/) 的。 Go语言本身有很多的外围工具，比如 gofmt, godoc。其中格式化工具 gofmt 帮助大家简单直接的就统一了代码风格。Go 本身就带有 parser 包，就能够很好的去解析go源码到语法树。 唯一要吐槽的是 Q&A 环节，提问的童鞋用谁都听不懂的“英语”去问，哈哈哈！
 
+<!--more-->
 
 ## Go 和 高速并发
 
