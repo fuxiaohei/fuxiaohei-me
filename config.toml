@@ -1,0 +1,50 @@
+[site]
+  title = "傅小黑的闲言碎语"
+  sub_title = ""
+  base = "https://fuxiaohei.me"
+  description = "傅小黑的闲言碎语，记录生活中的胡说八道"
+  keywords = ["傅小黑", "博客", "blog"]
+
+[[menu]]
+  Title = "Home"
+  Slug = "/"
+  Blank = false
+
+[[menu]]
+  Title = "Archives"
+  Slug = "/archives/"
+  Blank = false
+
+[[menu]]
+  Title = "About"
+  Slug = "/about/"
+  Blank = false
+
+[theme]
+  directory = "./themes/default"
+  config_file = "theme_config.toml"
+
+[build]
+  output_dir = "./build"
+  static_assets_dir = ["./assets"]
+  post_link_format = "/{{.Date.Year}}/{{.Date.Month}}/{{.Slug}}/"
+  tag_link_format = "/tag/{{.Tag}}/"
+  tag_page_link_format = "/tag/{{.Tag}}/{{.Page}}/"
+  post_per_page = 5
+  post_page_link_format = "/page/{{.Page}}/"
+  archive_link = "/archives/"
+  feed_post_limit = 10
+  enable_minify_html = true
+
+[[author]]
+  name = "傅小黑"
+  email = "fuxiaohei@vip.qq.com"
+  website = "https://fuxiaohei.me"
+  bio = "Backend Developer"
+  avatar = "/assets/avatar.jpeg"
+  use_gravatar = false
+  slug = "/author/admin/"
+  [author.social]
+    github = "https://github.com/fuxiaohei"
+    twitter = "https://twitter.com/fuxiaohei"
+    weibo = "https://weibo.com/fuxiaohei"
