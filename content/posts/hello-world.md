@@ -2,7 +2,7 @@
 title = "Hello World"
 slug = "hello-world"
 description = "this is a demo post"
-tags = ["hello"]
+tags = []
 date = "2022-04-26 22:08:10"
 template = "post.html"
 draft = false

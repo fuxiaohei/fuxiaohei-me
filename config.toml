@@ -6,17 +6,17 @@
   keywords = ["傅小黑", "博客", "blog"]
 
 [[menu]]
-  Title = "Home"
+  Title = "首页"
   Slug = "/"
   Blank = false
 
 [[menu]]
-  Title = "Archives"
+  Title = "归档"
   Slug = "/archives/"
   Blank = false
 
 [[menu]]
-  Title = "About"
+  Title = "关于"
   Slug = "/about/"
   Blank = false
 
@@ -42,7 +42,7 @@
   website = "https://fuxiaohei.me"
   bio = "Backend Developer"
   avatar = "/assets/avatar.jpeg"
-  use_gravatar = false
+  use_gravatar = true
   slug = "/author/admin/"
   [author.social]
     github = "https://github.com/fuxiaohei"

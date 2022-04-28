@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="profile flex items-center justify-center border-b border-slate-200 my-8 pb-8">
         <div class="card mx-auto">
-            <img class="w-24 h-24 mx-auto rounded-lg leading-8 mb-3" src="{{.author.AvatarLink}}" alt="{{.author.Name}}">
+            <img class="w-24 h-24 mx-auto rounded-lg leading-8 mb-3" src="{{.author.AvatarLink}}?size=200" alt="{{.author.Name}}">
             <div class="text-center pb-4 text-xl text-gray-700 font-medium">{{.author.Name}}</div>
             <div class="text-center pb-4 text-gray-400 text-xs font-semibold">{{.author.Bio}}</div>
             <div class="text-center">
@@ -30,11 +30,12 @@
         </div>
     </div>
     <div class="all-tags border-b border-slate-200 mb-8 pb-8">
-        <h4 class="mb-4 text-lg font-semibold text-gray-700">Tags</h4>
+        <h4 class="mb-4 text-lg font-semibold text-gray-700">所有标签</h4>
         <div class="tag-list">
-            {{range .tags}}<a class="p-2 rounded leading-none inline-block items-center hover:text-sky-600"
+            {{range .tags}}<a
+                class="p-2 rounded leading-none inline-block items-center hover:text-sky-600 dark:text-zinc-400 dark:hover:text-sky-300"
                 href="{{.Link}}">
-                {{.Name}}<span class="bg-slate-200 p-1 rounded text-gray-600 text-xs ml-1">{{.PostCount}}</span>
+                {{.Name}}<span class="bg-slate-200 font-bold rounded text-gray-600 text-sm ml-2 text-center w-5 inline-block dark:bg-zinc-600 dark:text-zinc-300">{{.PostCount}}</span>
             </a>{{end}}
         </div>
     </div>

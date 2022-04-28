@@ -1,3 +1,4 @@
 # pugo binary
 /pugo
 /build
+*.tar.gz
