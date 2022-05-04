@@ -48,3 +48,19 @@
     github = "https://github.com/fuxiaohei"
     twitter = "https://twitter.com/fuxiaohei"
     weibo = "https://weibo.com/fuxiaohei"
+
+[extension]
+  [extension.feed]
+    enabled = true
+    limit_nums = 10
+    link = "/atom.xml"
+  [extension.sitemap]
+    enabled = true
+    link = "/sitemap.xml"
+  [extension.analytics]
+    [extension.analytics.google_analytics]
+      enabled = true
+      uid = "G-HZ7KDTMQGZ"
+    [extension.analytics.plausible]
+      enabled = false
+      data_domain = ""
