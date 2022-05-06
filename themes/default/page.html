@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 {{template "head.html" .}}
-<body class="dark:bg-zinc-900">
+<body>
     {{template "header.html" .}}
     <main class="main">
         <div class="main-container">
@@ -15,6 +15,15 @@
                         <span class="post-author">{{.page.Author.Name}}</span>
                     </div>
                     <div class="post-content">{{HTML .page.Content}}</div>
+                    {{if and .extension.Comments.Enabled .post.Comment}}
+                    <section class="post-comment comment-{{.extension.Comments.Current}}">
+                        {{template "partial/comments.html" .}}
+                    </section>
+                    {{else}}
+                    <section class="post-comment">
+                        <div class="comment-closed"> Comment is closed</div>
+                    </section>
+                    {{end}}
                 </article>
             </div>
             <div class="main-sidebar">

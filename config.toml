@@ -64,3 +64,16 @@
     [extension.analytics.plausible]
       enabled = false
       data_domain = ""
+  [extension.comments]
+    enabled = true
+    [extension.comments.disqus]
+      enabled = false
+      shortname = ""
+    [extension.comments.valine]
+      enabled = false
+      app_id = ""
+      app_key = ""
+      server_url = ""
+    [extension.comments.twikoo]
+      enabled = true
+      eid = "fuxiaohei-me-twikoo-1cfr7ffc1db8"
