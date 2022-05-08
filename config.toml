@@ -16,6 +16,11 @@
   Blank = false
 
 [[menu]]
+  Title = "好友"
+  Slug = "/friends/"
+  Blank = false
+
+[[menu]]
   Title = "关于"
   Slug = "/about/"
   Blank = false
