@@ -21,6 +21,11 @@
   Blank = false
 
 [[menu]]
+  Title = "简历"
+  Slug = "/resume/"
+  Blank = false
+
+[[menu]]
   Title = "关于"
   Slug = "/about/"
   Blank = false
