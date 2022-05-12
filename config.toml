@@ -74,6 +74,10 @@
     [extension.analytics.plausible]
       enabled = false
       data_domain = ""
+    [extension.analytics.v51la]
+      enabled = true
+      id = "JgQKqXcskjN3xofP"
+      ck = "JgQKqXcskjN3xofP"
   [extension.comments]
     enabled = true
     [extension.comments.disqus]
