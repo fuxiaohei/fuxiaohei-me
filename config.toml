@@ -52,7 +52,7 @@
   website = "https://fuxiaohei.me"
   bio = "Backend Developer"
   avatar = "/assets/avatar.jpeg"
-  use_gravatar = true
+  use_gravatar = false
   slug = "/author/admin/"
   [author.social]
     github = "https://github.com/fuxiaohei"
