@@ -3,7 +3,7 @@ title = "关于"
 slug = "about/"
 description = "关于本站，关于我，联系我"
 date = "2022-04-28 22:08:10"
-template = "page.html"
+template = "page.hbs"
 draft = false
 author = "傅小黑"
 ```

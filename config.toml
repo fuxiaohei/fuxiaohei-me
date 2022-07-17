@@ -1,93 +1,61 @@
 [site]
-  title = "傅小黑的闲言碎语"
-  sub_title = ""
-  base = "https://fuxiaohei.me"
-  description = "傅小黑的闲言碎语，记录生活中的胡说八道"
-  keywords = ["傅小黑", "博客", "blog"]
+title = '傅小黑的闲言碎语'
+subtitle = '傅小黑的闲言碎语'
+description = '傅小黑的闲言碎语，记录生活中的胡说八道'
+keywords = [
+    '傅小黑',
+    'blog',
+    '博客',
+    '个人站点'
+]
+language = 'zh-CN'
+author = 'fuxiaohei'
 
-[[menu]]
-  Title = "首页"
-  Slug = "/"
-  Blank = false
+[url]
+base = 'https://fuxiaohei.me'
+root = '/'
+post_link_format = '/:year/:month/:day/:slug'
+post_page_format = '/page/:page'
+per_page_size = 10
+tag_link_format = '/tag/:tag'
+tag_page_format = '/tag/:tag/page/:page'
 
-[[menu]]
-  Title = "归档"
-  Slug = "/archives/"
-  Blank = false
-
-[[menu]]
-  Title = "好友"
-  Slug = "/friends/"
-  Blank = false
-
-[[menu]]
-  Title = "简历"
-  Slug = "/resume/"
-  Blank = false
-
-[[menu]]
-  Title = "关于"
-  Slug = "/about/"
-  Blank = false
+[directory]
+source = 'source'
+output = 'dist'
+themes = 'themes'
+assets = ['assets']
 
 [theme]
-  directory = "./themes/default"
-  config_file = "theme_config.toml"
+name = 'pugo-rs'
+index_template = 'posts.hbs'
+assets_dir = ['static']
 
-[build]
-  output_dir = "./build"
-  static_assets_dir = ["./assets"]
-  post_link_format = "/{{.Date.Year}}/{{.Date.Month}}/{{.Slug}}/"
-  tag_link_format = "/tag/{{.Tag}}/"
-  tag_page_link_format = "/tag/{{.Tag}}/{{.Page}}/"
-  post_per_page = 5
-  post_page_link_format = "/page/{{.Page}}/"
-  archive_link = "/archives/"
-  feed_post_limit = 10
-  enable_minify_html = true
+[[nav]]
+name = '首页'
+url = '/'
 
-[[author]]
-  name = "傅小黑"
-  email = "fuxiaohei@vip.qq.com"
-  website = "https://fuxiaohei.me"
-  bio = "Backend Developer"
-  avatar = "/assets/avatar.jpeg"
-  use_gravatar = false
-  slug = "/author/admin/"
-  [author.social]
-    github = "https://github.com/fuxiaohei"
-    twitter = "https://twitter.com/fuxiaohei"
-    weibo = "https://weibo.com/fuxiaohei"
+[[nav]]
+name = '归档'
+url = '/archives/'
 
-[extension]
-  [extension.feed]
-    enabled = true
-    limit_nums = 10
-    link = "/atom.xml"
-  [extension.sitemap]
-    enabled = true
-    link = "/sitemap.xml"
-  [extension.analytics]
-    [extension.analytics.google_analytics]
-      enabled = true
-      uid = "G-HZ7KDTMQGZ"
-    [extension.analytics.plausible]
-      enabled = false
-      data_domain = ""
-    [extension.analytics.v51la]
-      enabled = true
-      id = "JgQKqXcskjN3xofP"
-      ck = "JgQKqXcskjN3xofP"
-  [extension.comments]
-    enabled = true
-    [extension.comments.disqus]
-      enabled = false
-      shortname = ""
-    [extension.comments.valine]
-      enabled = false
-      app_id = ""
-      app_key = ""
-      server_url = ""
-    [extension.comments.twikoo]
-      enabled = true
-      eid = "fuxiaohei-me-twikoo-1cfr7ffc1db8"
+[[nav]]
+name = '好友'
+url = '/friends'
+
+[[nav]]
+name = '关于'
+url = '/about'
+
+[author.fuxiaohei]
+name = '傅小黑'
+email = 'fuxiaohei@vip.qq.com'
+website = 'https://fuxiaohei.me'
+bio = 'Backend Developer'
+avatar = '/assets/avatar.jpeg'
+use_gravatar = false
+
+[author.fuxiaohei.social]
+github = "https://github.com/fuxiaohei"
+twitter = "https://twitter.com/fuxiaohei"
+weibo = "https://weibo.com/fuxiaohei"

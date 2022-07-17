@@ -1,0 +1,7 @@
+{{#if pagination}}
+<div class="post-pager">
+    {{#if pagination.has_prev}}<a href="{{pagination.prev_url}}" class="post-pager-step">Prev</a>{{/if}}
+    <span class="post-pager-size">{{pagination.current}} / {{pagination.total_pages}}</span>
+    {{#if pagination.has_next}}<a href="{{pagination.next_url}}" class="post-pager-step">Next</a>{{/if}}
+</div>
+{{/if}}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{{> partials/meta.hbs}}
+
+<body>
+  {{> partials/header.hbs}}
+  <main class="main">
+    <div class="main-container">
+      <div class="main-left-container post-list">
+        {{#if current_tag}}<div class="post-header">#{{current_tag.name}}</div>{{/if}}
+        {{#each posts}}
+        <article class="post-container">
+          <h3 class="post-title"><a href="{{permalink}}">{{title}}</a></h3>
+          <div class="post-meta">
+            <span class="post-date">{{date_format datetime}}</span>
+            <span class="post-meta-gap">|</span>
+            <span class="post-author">{{author.name}}</span>
+            {{#each tags}}
+            <span class="post-meta-gap">|</span>
+            <a href="{{url}}" class="post-tag">#{{name}}</a>
+            {{/each}}
+          </div>
+          <div class="post-brief post-content">{{{brief}}}</div>
+          <div class="post-readmore"><a href="{{permalink}}" class="post-tag">Read More</a></div>
+        </article>
+        {{/each}}
+        {{> partials/pagination.hbs}}
+      </div>
+      {{> partials/sidebar.hbs}}
+    </div>
+  </main>
+  {{> partials/footer.hbs}}
+</body>
+
+</html>

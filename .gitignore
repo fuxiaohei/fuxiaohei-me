@@ -2,5 +2,6 @@
 
 # pugo binary
 /pugo
+/pugo-rs
 /build
 *.tar.gz

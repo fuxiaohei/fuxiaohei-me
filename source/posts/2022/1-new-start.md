@@ -4,7 +4,7 @@ slug = "new-start"
 description = "写在新的开始"
 tags = ["生活"]
 date = "2022-04-27 12:00"
-template = "post.html"
+template = "post.hbs"
 draft = false
 author = "傅小黑"
 ```

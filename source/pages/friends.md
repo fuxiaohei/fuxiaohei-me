@@ -3,7 +3,7 @@ title = "朋友们"
 slug = "friends"
 description = "傅小黑的朋友们"
 date = "2022-05-08 13:30"
-template = "page.html"
+template = "page.hbs"
 draft = false
 author = "傅小黑"
 ```

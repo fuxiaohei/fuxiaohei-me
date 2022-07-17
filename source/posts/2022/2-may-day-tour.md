@@ -4,7 +4,7 @@ slug = "may-day-tour"
 description = "五一劳动节，到周边走走看看"
 tags = ["生活"]
 date = "2022-05-07 12:00"
-template = "post.html"
+template = "post.hbs"
 draft = false
 author = "傅小黑"
 ```

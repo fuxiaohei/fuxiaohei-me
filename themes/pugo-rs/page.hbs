@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+{{> partials/meta.hbs}}
+
+<body>
+  {{> partials/header.hbs}}
+  <main class="main">
+    <div class="main-container">
+      <div class="main-left-container">
+        <article class="post-container">
+          <h3 class="post-title"><a href="{{page.permalink}}">{{page.title}}</a></h3>
+          <div class="post-meta">
+            <span class="post-date">{{date_format page.datetime}}</span>
+            <span class="post-meta-gap">|</span>
+            <span class="post-author">{{page.author.name}}</span>
+          </div>
+          <div class="post-content">{{{page.content}}}</div>
+          {{#if page.comments}}
+          <section class="post-comment comment">
+            <div class="comment-closed"> Comment is enabled</div>
+          </section>
+          {{else}}
+          <section class="post-comment">
+            <div class="comment-closed"> Comment is closed</div>
+          </section>
+          {{/if}}
+        </article>
+      </div>
+      {{> partials/sidebar.hbs}}
+    </div>
+  </main>
+  {{> partials/footer.hbs}}
+</body>
+
+</html>

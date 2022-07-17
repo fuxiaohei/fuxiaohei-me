@@ -4,7 +4,7 @@ slug = "hello-world"
 description = "this is a demo post"
 tags = []
 date = "2022-04-26 22:08:10"
-template = "post.html"
+template = "post.hbs"
 draft = false
 author = "傅小黑"
 ```

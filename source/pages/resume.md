@@ -3,7 +3,7 @@ title = "简历"
 slug = "resume"
 description = "傅小黑的简历"
 date = "2022-05-09 13:30"
-template = "page.html"
+template = "page.hbs"
 draft = false
 author = "傅小黑"
 ```
