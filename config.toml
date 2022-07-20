@@ -14,11 +14,11 @@ author = 'fuxiaohei'
 [url]
 base = 'https://fuxiaohei.me'
 root = '/'
-post_link_format = '/:year/:month/:day/:slug'
-post_page_format = '/page/:page'
+post_link_format = '/:year/:month/:slug/'
+post_page_format = '/page/:page/'
 per_page_size = 10
-tag_link_format = '/tag/:tag'
-tag_page_format = '/tag/:tag/page/:page'
+tag_link_format = '/tag/:tag/'
+tag_page_format = '/tag/:tag/page/:page/'
 
 [directory]
 source = 'source'
@@ -52,7 +52,7 @@ name = '傅小黑'
 email = 'fuxiaohei@vip.qq.com'
 website = 'https://fuxiaohei.me'
 bio = 'Backend Developer'
-avatar = '/assets/avatar.jpeg'
+avatar = '/assets/fuxiaohei.png'
 use_gravatar = false
 
 [author.fuxiaohei.social]

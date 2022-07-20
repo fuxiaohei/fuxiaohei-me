@@ -21,8 +21,15 @@
           </div>
           <div class="post-content">{{{post.content}}}</div>
           {{#if post.comments}}
-          <section class="post-comment comment">
-            <div class="comment-closed"> Comment is enabled</div>
+          <section class="post-comment comment-twikoo">
+            <div id="tcomment"></div>
+            <script src="https://cdn.staticfile.org/twikoo/1.5.11/twikoo.all.min.js"></script>
+            <script>
+              twikoo.init({
+                envId: 'fuxiaohei-me-twikoo-1cfr7ffc1db8',
+                el: '#tcomment',
+              })
+            </script>
           </section>
           {{else}}
           <section class="post-comment">

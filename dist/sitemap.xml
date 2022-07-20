@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://fuxiaohei.me/2022/05/07/may-day-tour</loc>
+        <loc>https://fuxiaohei.me/2022/05/may-day-tour/</loc>
         <lastmod>2022-05-07T12:00:00Z</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://fuxiaohei.me/2022/04/27/new-start</loc>
+        <loc>https://fuxiaohei.me/2022/04/new-start/</loc>
         <lastmod>2022-04-27T12:00:00Z</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://fuxiaohei.me/2022/04/26/hello-world</loc>
+        <loc>https://fuxiaohei.me/2022/04/hello-world/</loc>
         <lastmod>2022-04-26T22:08:10Z</lastmod>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://fuxiaohei.me/page/1</loc>
+        <loc>https://fuxiaohei.me/page/1/</loc>
         <lastmod>2022-05-07T12:00:00Z</lastmod>
         <priority>0.7</priority>
         <changefreq>weekly</changefreq>
@@ -43,7 +43,7 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://fuxiaohei.me/tag/%E7%94%9F%E6%B4%BB/page/1</loc>
+        <loc>https://fuxiaohei.me/tag/%E7%94%9F%E6%B4%BB/page/1/</loc>
         <lastmod>2022-05-07T12:00:00Z</lastmod>
         <priority>0.7</priority>
         <changefreq>weekly</changefreq>
@@ -52,6 +52,12 @@
         <loc>https://fuxiaohei.me/index.html</loc>
         <lastmod>2022-05-07T12:00:00Z</lastmod>
         <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://fuxiaohei.me/archives</loc>
+        <lastmod>2022-05-07T12:00:00Z</lastmod>
+        <priority>0.6</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>

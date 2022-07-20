@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{{> partials/meta.hbs}}
+
+<body>
+  {{> partials/header.hbs}}
+  <main class="main">
+    <div class="main-container">
+      <div class="main-left-container post-list">
+        <div class="post-header">Archives</div>
+        {{#each archives}}
+        <section class="post-container">
+          <h3 class="archive-title">{{year}}</h3>
+          <ul class="archive-list">
+            {{#each posts}}<li class="archive-item">
+              <span class="archive-date">{{date_format datetime fmt="%m-%d"}}</span>
+              <span class="post-meta-gap">|</span>
+              <a class="archive-post-title" href="{{permalink}}">{{title}}</a>
+            </li>{{/each}}
+          </ul>
+        </section>
+        {{/each}}
+        {{> partials/pagination.hbs}}
+      </div>
+      {{> partials/sidebar.hbs}}
+    </div>
+  </main>
+  {{> partials/footer.hbs}}
+</body>
+
+</html>
